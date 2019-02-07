@@ -23,7 +23,8 @@ def json_read(file_name):
 def xml_read(file_name):
     import xml.etree.ElementTree as ET
     xml_list = []
-    tree = ET.parse(file_name)
+    parser = ET.XMLParser(encoding='utf-8')
+    tree = ET.parse(file_name, parser)
     root = tree.getroot()
     xml_item = root.findall('channel/item/description')
     for item in xml_item:
